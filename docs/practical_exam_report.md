@@ -82,16 +82,16 @@ I evaluated all four models on the held-out test set using precision, recall, F1
 
 | Model | Precision | Recall | F1 Score | Accuracy |
 |---|---|---|---|---|
-| Neural Network | 84.0% | 73.0% | 78.1% | 75.3% |
+| Neural Network | 84.9% | 68.7% | 76.0% | 73.7% |
 | Logistic Regression (baseline) | 83.7% | 75.7% | 79.5% | 76.3% |
 | Random Forest | 82.0% | 79.1% | 80.5% | 76.8% |
 | Gradient Boosting | 81.9% | 82.6% | 82.3% | 78.4% |
 
 ### What the Comparison Shows
 
-All four models exceed the 80% precision target. The Neural Network leads on precision at 84.0%, followed closely by Logistic Regression at 83.7%. Gradient Boosting achieves the best overall balance with the highest F1 score (82.3%), recall (82.6%), and accuracy (78.4%).
+All four models exceed the 80% precision target. The Neural Network leads on precision at 84.9%, followed closely by Logistic Regression at 83.7%. Gradient Boosting achieves the best overall balance with the highest F1 score (82.3%), recall (82.6%), and accuracy (78.4%).
 
-More complex models trade a small amount of precision for better recall — Gradient Boosting catches 82.6% of actual high-traffic recipes compared to the Neural Network's 73.0%, at a cost of 2.1 percentage points of precision.
+More complex models trade a small amount of precision for better recall — Gradient Boosting catches 82.6% of actual high-traffic recipes compared to the Neural Network's 68.7%, at a cost of 3.0 percentage points of precision.
 
 This presents a meaningful trade-off: Logistic Regression is the safest choice when the priority is minimizing false positives (predicting high traffic when it isn't), while Gradient Boosting is the best choice when the business also wants to avoid missing high-traffic recipes.
 
@@ -111,12 +111,12 @@ Based on current test set performance:
 
 | Model | Precision (KPI) | Meets 80% Target? |
 |---|---|---|
-| Neural Network | 84.0% | Yes |
+| Neural Network | 84.9% | Yes |
 | Logistic Regression | 83.7% | Yes |
 | Random Forest | 82.0% | Yes |
 | Gradient Boosting | 81.9% | Yes |
 
-All four models meet or exceed the 80% precision target. Precision ranges from 81.9% to 84.0%, meaning that for every 10 recipes the model recommends as "high traffic," roughly 8 to 9 will actually generate high traffic when featured.
+All four models meet or exceed the 80% precision target. Precision ranges from 81.9% to 84.9%, meaning that for every 10 recipes the model recommends as "high traffic," roughly 8 to 9 will actually generate high traffic when featured.
 
 ### Monitoring Recommendation
 
@@ -130,11 +130,11 @@ The product team should track precision on a rolling basis as new recipes are fe
 
 All four models exceed the 80% precision target, confirming that we can reliably predict high-traffic recipes for the homepage.
 
-After validating and cleaning the dataset of 947 recipes, I trained four classification models. All four exceed the 80% precision target, with the Neural Network leading at 84.0% and Gradient Boosting achieving the best balanced performance (81.9% precision, 82.6% recall, 82.3% F1, 78.4% accuracy). Recipe category emerged as the strongest predictor of traffic — categories like Vegetable, Potato, and Chicken are associated with higher traffic rates, while Beverages tend to underperform.
+After validating and cleaning the dataset of 947 recipes, I trained four classification models. All four exceed the 80% precision target, with the Neural Network leading at 84.9% and Gradient Boosting achieving the best balanced performance (81.9% precision, 82.6% recall, 82.3% F1, 78.4% accuracy). Recipe category emerged as the strongest predictor of traffic — categories like Vegetable, Potato, and Chicken are associated with higher traffic rates, while Beverages tend to underperform.
 
 ### Recommendations
 
-1. **Deploy Logistic Regression for production.** While the Neural Network has the highest precision (84.0%), Logistic Regression is nearly identical (83.7%) and is simpler, faster, fully interpretable, and easier to maintain. If the business also wants to minimize missed high-traffic recipes, Gradient Boosting offers the best recall (82.6%) and F1 (82.3%). All models exceed the 80% precision target.
+1. **Deploy Logistic Regression for production.** While the Neural Network has the highest precision (84.9%), Logistic Regression is nearly identical (83.7%) and is simpler, faster, fully interpretable, and easier to maintain. If the business also wants to minimize missed high-traffic recipes, Gradient Boosting offers the best recall (82.6%) and F1 (82.3%). All models exceed the 80% precision target.
 
 2. **Prioritize category in recipe selection.** When multiple recipes score similarly in the model, favor categories with historically high traffic rates (Vegetable, Potato, Chicken) and deprioritize categories with lower rates (Beverages). This uses the strongest signal in the data.
 

@@ -26,7 +26,7 @@ uv run jupyter nbconvert --to notebook --execute pacticalExam_submission.ipynb
 | File | Purpose |
 |---|---|
 | `pacticalExam_submission.ipynb` | **Primary deliverable** — analysis notebook (note: filename has a typo) |
-| `data/recipe_site_traffic_2212.csv` | Dataset (895 recipes, 8 columns) |
+| `data/recipe_site_traffic_2212.csv` | Dataset (947 recipes, 8 columns) |
 | `docs/practical_exam_report.md` | Written report deliverable |
 | `docs/practical_exam_instructions.md` | Full exam brief |
 | `docs/grading_rubric.md` | Grading criteria — check all 7 competencies before submitting |
